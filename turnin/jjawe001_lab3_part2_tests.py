@@ -45,6 +45,12 @@ tests = [
         'steps': [ {'inputs': [('PINA',0x0F)], 'iterations': 5 } ],
         'expected': [('PORTC',0x3F)],
     },
+    {
+        'description': 'Fuel level 13 through 15. PC5, PC4, PC3, PC2, PC1, and PC0 light.',
+        'steps': [ {'inputs': [('PINA',0x00)], 'iterations': 5 } ],
+        'expected': [('PORTC',0x40)],
+    },
+
 
 ]
 
