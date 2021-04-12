@@ -27,10 +27,7 @@ int main(void) {
 	 tmpC = 0x00;
 
 	 // Fuel level is 1 or 2, then PC5 and PC6 light
-	 if (tmpA == 0x41 || tmpA == 0x42) {
-	 	
-	 }
-	 else if (tmpA == 0x01 || tmpA == 0x02) {
+	 if (tmpA == 0x01 || tmpA == 0x02) {
 		tmpC =  0x60;
 	 }
 	 // Fuel level is 3 or 4, then PC4, PC5, and PC6 light
