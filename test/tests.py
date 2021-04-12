@@ -16,33 +16,37 @@
 # altered in between executions (unless preconditions are used).
 tests = [
     {
-        'description': 'A:0x00 => B:0x00, C:0x00',
-        'steps': [ {'inputs': [('PIND',0x00), ('PINB', 0x00)], 'iterations': 5 } ],
-        'expected': [('PORTB', 0x00)],
+        'description': 'Fuel level 1 or 2. PC6 and PC5 light.',
+        'steps': [ {'inputs': [('PINA',0x01)], 'iterations': 5 } ],
+        'expected': [('PORTC',0x60)],
     },
     {
-        'description': 'D:0x14, B:0x0 => PORTB: 0x04',
-        'steps': [ {'inputs': [('PIND',0x14), ('PINB', 0x00)], 'iterations': 5 } ],
-        'expected': [('PORTB', 0x04)],
+        'description': 'Fuel level 3 or 4. PC6, PC5 and PC4 light.',
+        'steps': [ {'inputs': [('PINA',0x03)], 'iterations': 5 } ],
+        'expected': [('PORTC',0x70)],
     },
     {
-        'description': 'D: 0x64, B: 0x00 =>  PORTD: 0x02',
-        'steps': [ {'inputs': [('PIND',0x64), ('PINB', 0x00)], 'iterations': 5 } ],
-        'expected': [('PORTB', 0x02)],
+        'description': 'Fuel level 5 or 6. PC5, PC4, and PC3 light.',
+        'steps': [ {'inputs': [('PINA',0x05)], 'iterations': 5 } ],
+        'expected': [('PORTC',0x38)],
     },
     {
-        'description': 'D:0x02, B: 0x01 => PORTB: 0x00',
-        'steps': [ {'inputs': [('PIND',0x02), ('PINB', 0x01)], 'iterations': 5 } ],
-        'expected': [('PORTB', 0x00)],
+        'description': 'Fuel level 7 through 9. PC5, PC4, PC3, PC2 light.',
+        'steps': [ {'inputs': [('PINA',0x08)], 'iterations': 5 } ],
+        'expected': [('PORTC',0x3C)],
     },
     {
-        'description': 'D: 0x66, B:0x00 => B:0x02',
-        'steps': [ {'inputs': [('PIND',0x66), ('PINB', 0x00)], 'iterations': 5 } ],
-        'expected': [('PORTB', 0x02)],
+        'description': 'Fuel level 10 through 12. PC5, PC4, PC3, PC2, PC1 light.',
+        'steps': [ {'inputs': [('PINA',0x0A)], 'iterations': 5 } ],
+        'expected': [('PORTC',0x3E)],
+    },
+    {
+        'description': 'Fuel level 13 through 15. PC5, PC4, PC3, PC2, PC1, and PC0 light.',
+        'steps': [ {'inputs': [('PINA',0x0F)], 'iterations': 5 } ],
+        'expected': [('PORTC',0x3F)],
     },
 
 ]
-
 
 # Optionally you can add a set of "watch" variables these need to be global or static and may need
 # to be scoped at the function level (for static variables) if there are naming conflicts. The 

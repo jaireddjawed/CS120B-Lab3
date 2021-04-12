@@ -22,7 +22,7 @@ tests = [
     },
     {
         'description': 'Fuel level 3 or 4. PC6, PC5 and PC4 light.',
-        'steps': [ {'inputs': [('PINA',0x04)], 'iterations': 5 } ],
+        'steps': [ {'inputs': [('PINA',0x03)], 'iterations': 5 } ],
         'expected': [('PORTC',0x70)],
     },
     {
@@ -32,8 +32,8 @@ tests = [
     },
     {
         'description': 'Fuel level 7 through 9. PC5, PC4, PC3, PC2 light.',
-        'steps': [ {'inputs': [('PINA',0x00)], 'iterations': 5 } ],
-        'expected': [('PORTC',0x00)],
+        'steps': [ {'inputs': [('PINA',0x08)], 'iterations': 5 } ],
+        'expected': [('PORTC',0x3C)],
     },
     {
         'description': 'Fuel level 10 through 12. PC5, PC4, PC3, PC2, PC1 light.',
@@ -42,7 +42,7 @@ tests = [
     },
     {
         'description': 'Fuel level 13 through 15. PC5, PC4, PC3, PC2, PC1, and PC0 light.',
-        'steps': [ {'inputs': [('PINA',0x0E)], 'iterations': 5 } ],
+        'steps': [ {'inputs': [('PINA',0x0F)], 'iterations': 5 } ],
         'expected': [('PORTC',0x3F)],
     },
 

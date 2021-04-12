@@ -1,7 +1,7 @@
 /*	Author: lab
  *  Partner(s) Name: Jaired Jawed
  *	Lab Section:
- *	Assignment: Lab #3  Exercise #5
+ *	Assignment: Lab #3  Exercise #2
  *	Exercise Description: [optional - include for your own benefit]
  *
  *	I acknowledge all content contained herein, excluding template or example
@@ -15,37 +15,40 @@
 int main(void) {
     /* Insert DDR and PORT initializations */
 
+    DDRA = 0x00; PORTA = 0xFF;
+    DDRC = 0xFF; PORTC = 0x00;
 
-    DDRD = 0x00; PORTD = 0xFF;
-    DDRB = 0x01; PORTB = 0x00;
-
-    unsigned char tmpB = 0x00;
-    unsigned char tmpD = 0x00;
-    unsigned short total = 0x00;
-    unsigned char endB = 0x00;
-
+    unsigned char tmpA = 0x00;
+ 
     /* Insert your solution below */
     while (1) {
-    	tmpB = PINB;
-	tmpD = PIND;
+  	 tmpA = PINA;
 
-	// combine the D weight and B weight
-	total = (tmpD << 1) | (tmpB & 0x01);
-
-	// >= 70 pounds
-	if (total >= 0x46) {
-		endB = 0x02; // 0000 0010
-	}
-	// >5 and < 70
-	else if (total > 0x05 && total < 0x46) {
-		endB = 0x04;
-	}
-	// <= 5
-	else if (total <= 0x05) {
-	       endB = 0x00;
-	}	       
-
-	PORTB = endB;
+	 // Fuel level 13, 14, or 15
+	 if ((tmpA == 0x0D) || (tmpA  == 0x0E) || (tmpA == 0x0F))
+    	 {
+		PORTC = 0x3F;
+	 }
+	 // Fuel level 10, 11, or 12
+	 else if ((tmpA == 0x0A) || (tmpA == 0x0B) || (tmpA == 0x0C)) {
+		PORTC = 0x3E;
+	 }
+	 // Fuel level 7, 8, or 9
+	 else if ((tmpA == 0x07) || (tmpA == 0x08) || (tmpA == 0x09)) {
+	        PORTC = 0x3C;
+	 }
+	 // Fuel level 6 or 7
+	 else if ((tmpA == 0x05) || (tmpA == 0x06)) {
+	 	PORTC = 0x38;
+	 }
+	 // Fuel level 3 or 4
+	 else if ((tmpA == 0x03) || (tmpA  == 0x04)) {
+	 	PORTC = 0x70;
+	 }
+	 else if ((tmpA == 0x01) || (tmpA == 0x02)) {
+		PORTC = 0x60;
+	 }
+	 
     }
  
     return 1;
