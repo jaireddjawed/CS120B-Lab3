@@ -47,8 +47,8 @@ tests = [
     },
     {
         'description': 'Fuel level 13 through 15. PC5, PC4, PC3, PC2, PC1, and PC0 light.',
-        'steps': [ {'inputs': [('PINA',0x00)], 'iterations': 5 } ],
-        'expected': [('PORTC',0x40)],
+        'steps': [ {'inputs': [('PINA',0x83)], 'iterations': 5 } ],
+        'expected': [('PORTC',0x70)],
     },
 
 
