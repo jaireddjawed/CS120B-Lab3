@@ -16,30 +16,31 @@
 # altered in between executions (unless preconditions are used).
 tests = [
     {
-        'description': 'A:0x00 => B:0x00, C:0x00',
-        'steps': [ {'inputs': [('PIND',0x00), ('PINB', 0x00)], 'iterations': 5 } ],
-        'expected': [('PORTB', 0x00)],
+        'description': 'A:00000000 => B:0000, C:00000.',
+        'steps': [ {'inputs': [('PINA',0x00)], 'iterations': 5 } ],
+        'expected': [('PORTB', 0x00), ('PORTC',0x00)],
     },
     {
-        'description': 'D:0x14, B:0x0 => PORTB: 0x04',
-        'steps': [ {'inputs': [('PIND',0x14), ('PINB', 0x00)], 'iterations': 5 } ],
-        'expected': [('PORTB', 0x04)],
+        'description': 'A:11001111 => B:1100, C:11110000.',
+        'steps': [ {'inputs': [('PINA',0xCF)], 'iterations': 5 } ],
+        'expected': [('PORTB', 0x0C), ('PORTC',0xF0)],
     },
     {
-        'description': 'D: 0x64, B: 0x00 =>  PORTD: 0x02',
-        'steps': [ {'inputs': [('PIND',0x64), ('PINB', 0x00)], 'iterations': 5 } ],
-        'expected': [('PORTB', 0x02)],
+        'description': 'A:10101010 => B:1010, C:10100000.',
+        'steps': [ {'inputs': [('PINA',0xAA)], 'iterations': 5 } ],
+        'expected': [('PORTB', 0xA), ('PORTC',0xA0)],
     },
     {
-        'description': 'D:0x02, B: 0x01 => PORTB: 0x00',
-        'steps': [ {'inputs': [('PIND',0x02), ('PINB', 0x01)], 'iterations': 5 } ],
-        'expected': [('PORTB', 0x00)],
+        'description': 'A:00101010 => B:0010, C:10100000.',
+        'steps': [ {'inputs': [('PINA',0x2A)], 'iterations': 5 } ],
+        'expected': [('PORTB', 0x02), ('PORTC',0xA0)],
     },
-    {
-        'description': 'D: 0x66, B:0x00 => B:0x02',
-        'steps': [ {'inputs': [('PIND',0x66), ('PINB', 0x00)], 'iterations': 5 } ],
-        'expected': [('PORTB', 0x02)],
+    { 
+        'description': 'A:10000111 => B:1000, C:01110000.',
+        'steps': [ {'inputs': [('PINA',0x87)], 'iterations': 5 } ],
+        'expected': [('PORTB', 0x08), ('PORTC',0x70)],
     },
+
 
 ]
 
